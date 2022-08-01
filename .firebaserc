@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "setbuilder-a706f": {
+      "hosting": {
+        "setbuilder": [
+          "setbuilder-a706f"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "setbuilder-a706f"
+  }
+}
