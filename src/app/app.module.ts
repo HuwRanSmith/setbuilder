@@ -14,14 +14,10 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideFunctions,getFunctions } from '@angular/fire/functions';
-import { SearchComponent } from './components/search/search.component';
-import { HomePageComponent } from './components/home-page/home-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchComponent,
-    HomePageComponent
   ],
   imports: [
     BrowserModule,
