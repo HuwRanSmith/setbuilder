@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,10 +15,12 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideFunctions,getFunctions } from '@angular/fire/functions';
+import { EditComponent } from './components/edit-page/edit/edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    EditComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,6 +31,7 @@ import { provideFunctions,getFunctions } from '@angular/fire/functions';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    DragDropModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
