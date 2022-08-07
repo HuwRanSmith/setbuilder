@@ -21,7 +21,7 @@
     >
       <p class="empty-channel" *ngIf="channelOne.length === 0">Empty Channel</p>
       <div class="song" *ngFor="let song of channelOne" cdkDrag>
-        {{ song }}
+        {{ song.name }}
       </div>
     </div>
   </div>
@@ -43,7 +43,7 @@
     >
       <p class="empty-channel" *ngIf="channelTwo.length === 0">Empty Channel</p>
       <div class="song" *ngFor="let song of channelTwo" cdkDrag>
-        {{ song }}
+        {{ song.name }}
       </div>
     </div>
   </div>
@@ -67,7 +67,7 @@
         Empty Channel
       </p>
       <div class="song" *ngFor="let song of channelThree" cdkDrag>
-        {{ song }}
+        {{ song.name }}
       </div>
     </div>
   </div>
@@ -91,7 +91,7 @@
         Empty Channel
       </p>
       <div class="song" *ngFor="let song of channelFour" cdkDrag>
-        {{ song }}
+        {{ song.name }}
       </div>
     </div>
   </div>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { Song } from '../../../song'
+import { SongService } from 'src/app/services/song.service';
 
 @Component({
   selector: 'app-edit',
@@ -7,17 +9,21 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
   styleUrls: ['./edit.component.css']
 })
 export class EditComponent implements OnInit {
-  channelOne: string[] = ['Tour', 'Mission', 'All Night'];
-  channelTwo: string[] = ['Renaissance', 'Bearclaw', 'Techno'];
-  channelThree: string[] = ['Machina', 'Solar System', 'Sundown'];
-  channelFour: string[] = ['Horizon', 'Siren', 'Galaxies'];
+  channelOne: Song[] = [];
+  channelTwo: Song[] = [];
+  channelThree: Song[] = [];
+  channelFour: Song[] = [];
 
-  constructor() { }
+  constructor(private songService: SongService) { }
 
   ngOnInit(): void {
   }
 
-  drop(event: CdkDragDrop<string[]>) {
+  getSongs(): void {
+    this.channelOne = this.songService.getSongs();
+  }
+
+  drop(event: CdkDragDrop<Song[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
