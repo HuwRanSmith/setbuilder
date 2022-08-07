@@ -7,10 +7,10 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
   styleUrls: ['./edit.component.css']
 })
 export class EditComponent implements OnInit {
-  channel1: string[] = ['Tour', 'Mission', 'All Night'];
-  channel2: string[] = ['Renaissance', 'Bearclaw', 'Techno'];
-  channel3: string[] = ['Machina', 'Solar System', 'Sundown'];
-  channel4: string[] = ['Horizon', 'Siren', 'Galaxies'];
+  channelOne: string[] = ['Tour', 'Mission', 'All Night'];
+  channelTwo: string[] = ['Renaissance', 'Bearclaw', 'Techno'];
+  channelThree: string[] = ['Machina', 'Solar System', 'Sundown'];
+  channelFour: string[] = ['Horizon', 'Siren', 'Galaxies'];
 
   constructor() { }
 

@@ -1,59 +1,98 @@
-<div class="channel-container">
-  <h2>Channel 1</h2>
-
-  <div
-    cdkDropList
-    #channel1List="cdkDropList"
-    [cdkDropListData]="channel1"
-    [cdkDropListConnectedTo]="[channel2List, channel3List, channel4List]"
-    class="channel-list one"
-    (cdkDropListDropped)="drop($event)"
-  >
-    <div class="song-box" *ngFor="let song of channel1" cdkDrag>{{ song }}</div>
-  </div>
+<div class="add-container">
+  <button mat-raised-button class="add song">Add Song</button>
+  <button mat-raised-button class="add blank">Add Blank</button>
 </div>
 
-<div class="channel-container">
-  <h2>Channel 2</h2>
+<div class="mixer">
+  <div class="channel-container">
+    <h2>Channel 1</h2>
 
-  <div
-    cdkDropList
-    #channel2List="cdkDropList"
-    [cdkDropListData]="channel2"
-    [cdkDropListConnectedTo]="[channel1List, channel3List, channel4List]"
-    class="channel-list two"
-    (cdkDropListDropped)="drop($event)"
-  >
-    <div class="song-box" *ngFor="let song of channel2" cdkDrag>{{ song }}</div>
+    <div
+      cdkDropList
+      #channelOneList="cdkDropList"
+      [cdkDropListData]="channelOne"
+      [cdkDropListConnectedTo]="[
+        channelTwoList,
+        channelThreeList,
+        channelFourList
+      ]"
+      class="channel one"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <p class="empty-channel" *ngIf="channelOne.length === 0">Empty Channel</p>
+      <div class="song" *ngFor="let song of channelOne" cdkDrag>
+        {{ song }}
+      </div>
+    </div>
   </div>
-</div>
 
-<div class="channel-container">
-  <h2>Channel 3</h2>
+  <div class="channel-container">
+    <h2>Channel 2</h2>
 
-  <div
-    cdkDropList
-    #channel3List="cdkDropList"
-    [cdkDropListData]="channel3"
-    [cdkDropListConnectedTo]="[channel1List, channel2List, channel4List]"
-    class="channel-list three"
-    (cdkDropListDropped)="drop($event)"
-  >
-    <div class="song-box" *ngFor="let song of channel3" cdkDrag>{{ song }}</div>
+    <div
+      cdkDropList
+      #channelTwoList="cdkDropList"
+      [cdkDropListData]="channelTwo"
+      [cdkDropListConnectedTo]="[
+        channelOneList,
+        channelThreeList,
+        channelFourList
+      ]"
+      class="channel two"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <p class="empty-channel" *ngIf="channelTwo.length === 0">Empty Channel</p>
+      <div class="song" *ngFor="let song of channelTwo" cdkDrag>
+        {{ song }}
+      </div>
+    </div>
   </div>
-</div>
 
-<div class="channel-container">
-  <h2>Channel 4</h2>
+  <div class="channel-container">
+    <h2>Channel 3</h2>
 
-  <div
-    cdkDropList
-    #channel4List="cdkDropList"
-    [cdkDropListData]="channel4"
-    [cdkDropListConnectedTo]="[channel1List, channel2List, channel3List]"
-    class="channel-list four"
-    (cdkDropListDropped)="drop($event)"
-  >
-    <div class="song-box" *ngFor="let song of channel4" cdkDrag>{{ song }}</div>
+    <div
+      cdkDropList
+      #channelThreeList="cdkDropList"
+      [cdkDropListData]="channelThree"
+      [cdkDropListConnectedTo]="[
+        channelOneList,
+        channelTwoList,
+        channelFourList
+      ]"
+      class="channel three"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <p class="empty-channel" *ngIf="channelThree.length === 0">
+        Empty Channel
+      </p>
+      <div class="song" *ngFor="let song of channelThree" cdkDrag>
+        {{ song }}
+      </div>
+    </div>
+  </div>
+
+  <div class="channel-container">
+    <h2>Channel 4</h2>
+
+    <div
+      cdkDropList
+      #channelFourList="cdkDropList"
+      [cdkDropListData]="channelFour"
+      [cdkDropListConnectedTo]="[
+        channelOneList,
+        channelTwoList,
+        channelThreeList
+      ]"
+      class="channel four"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <p class="empty-channel" *ngIf="channelFour.length === 0">
+        Empty Channel
+      </p>
+      <div class="song" *ngFor="let song of channelFour" cdkDrag>
+        {{ song }}
+      </div>
+    </div>
   </div>
 </div>
