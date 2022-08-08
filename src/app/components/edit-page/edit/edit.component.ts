@@ -17,6 +17,7 @@ export class EditComponent implements OnInit {
   constructor(private songService: SongService) { }
 
   ngOnInit(): void {
+    this.getSongs();
   }
 
   getSongs(): void {
