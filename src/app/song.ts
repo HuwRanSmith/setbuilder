@@ -1,4 +1,5 @@
 export interface Song {
-    id: number;
-    name: string;
+  id: number;
+  name: string;
+  isBlank: boolean;
 }

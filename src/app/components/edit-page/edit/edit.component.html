@@ -1,98 +1,73 @@
 <div class="mixer">
-  <div class="channel-container">
+  <div class="channel">
     <h2>Channel 1</h2>
 
     <div
       cdkDropList
-      #channelOneList="cdkDropList"
-      [cdkDropListData]="channelOne"
-      [cdkDropListConnectedTo]="[
-        channelTwoList,
-        channelThreeList,
-        channelFourList
-      ]"
-      class="channel one"
+      #listOne="cdkDropList"
+      [cdkDropListData]="one"
+      [cdkDropListConnectedTo]="[listTwo, listThree, listFour]"
+      class="song-list"
       (cdkDropListDropped)="drop($event)"
     >
-      <p class="empty-channel" *ngIf="channelOne.length === 0">Empty Channel</p>
-      <div class="song" *ngFor="let song of channelOne" cdkDrag>
-        {{ song.name }}
+      <mat-card class="empty-label" *ngIf="one.length === 0">Empty</mat-card>
+      <div class="song-container" *ngFor="let song of one" cdkDrag>
+        <app-song-card [song]="song" color="#ffcccc"></app-song-card>
       </div>
     </div>
   </div>
 
-  <div class="channel-container">
+  <div class="channel">
     <h2>Channel 2</h2>
 
     <div
       cdkDropList
-      #channelTwoList="cdkDropList"
-      [cdkDropListData]="channelTwo"
-      [cdkDropListConnectedTo]="[
-        channelOneList,
-        channelThreeList,
-        channelFourList
-      ]"
-      class="channel two"
+      #listTwo="cdkDropList"
+      [cdkDropListData]="two"
+      [cdkDropListConnectedTo]="[listOne, listThree, listFour]"
+      class="song-list"
       (cdkDropListDropped)="drop($event)"
     >
-      <p class="empty-channel" *ngIf="channelTwo.length === 0">Empty Channel</p>
-      <div class="song" *ngFor="let song of channelTwo" cdkDrag>
-        {{ song.name }}
+      <mat-card class="empty-label" *ngIf="two.length === 0">Empty</mat-card>
+      <div class="song-container" *ngFor="let song of two" cdkDrag>
+        <app-song-card [song]="song" color="#ccccff"></app-song-card>
       </div>
     </div>
   </div>
 
-  <div class="channel-container">
+  <div class="channel">
     <h2>Channel 3</h2>
 
     <div
       cdkDropList
-      #channelThreeList="cdkDropList"
-      [cdkDropListData]="channelThree"
-      [cdkDropListConnectedTo]="[
-        channelOneList,
-        channelTwoList,
-        channelFourList
-      ]"
-      class="channel three"
+      #listThree="cdkDropList"
+      [cdkDropListData]="three"
+      [cdkDropListConnectedTo]="[listOne, listTwo, listFour]"
+      class="song-list"
       (cdkDropListDropped)="drop($event)"
     >
-      <p class="empty-channel" *ngIf="channelThree.length === 0">
-        Empty Channel
-      </p>
-      <div class="song" *ngFor="let song of channelThree" cdkDrag>
-        {{ song.name }}
+      <mat-card class="empty-label" *ngIf="three.length === 0">Empty</mat-card>
+      <div class="song-container" *ngFor="let song of three" cdkDrag>
+        <app-song-card [song]="song" color="#ccffcc"></app-song-card>
       </div>
     </div>
   </div>
 
-  <div class="channel-container">
+  <div class="channel">
     <h2>Channel 4</h2>
 
     <div
       cdkDropList
-      #channelFourList="cdkDropList"
-      [cdkDropListData]="channelFour"
-      [cdkDropListConnectedTo]="[
-        channelOneList,
-        channelTwoList,
-        channelThreeList
-      ]"
-      class="channel four"
+      #listFour="cdkDropList"
+      [cdkDropListData]="four"
+      [cdkDropListConnectedTo]="[listOne, listTwo, listThree]"
+      class="song-list"
       (cdkDropListDropped)="drop($event)"
     >
-      <p class="empty-channel" *ngIf="channelFour.length === 0">
-        Empty Channel
-      </p>
-      <div class="song" *ngFor="let song of channelFour" cdkDrag>
-        {{ song.name }}
+      <mat-card class="empty-label" *ngIf="four.length === 0">Empty</mat-card>
+      <div class="song-container" *ngFor="let song of four" cdkDrag>
+        <app-song-card [song]="song" color="#ffff99"></app-song-card>
       </div>
     </div>
   </div>
-</div>
-
-<div class="add-container">
-  <button mat-raised-button class="add song">Add Song</button>
-  <button mat-raised-button class="add blank">Add Blank</button>
 </div>

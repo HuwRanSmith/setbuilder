@@ -13,4 +13,8 @@ export class SongService {
   getSongs(): Song[] {
     return SONGS;
   }
+
+  newSong(): Song {
+    return { id: 1, name: 'new song', isBlank: false }
+  }
 }
