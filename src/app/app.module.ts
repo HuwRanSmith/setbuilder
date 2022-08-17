@@ -8,6 +8,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatCardModule } from '@angular/material/card';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,9 +20,17 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { provideFunctions, getFunctions } from '@angular/fire/functions';
 import { EditComponent } from './components/edit-page/edit/edit.component';
 import { SongCardComponent } from './components/edit-page/song-card/song-card.component';
+import { SpotifyTestComponent } from './components/test/spotify-test/spotify-test.component';
+import { FuncButtonComponent } from './components/test/func-button/func-button.component';
 
 @NgModule({
-  declarations: [AppComponent, EditComponent, SongCardComponent],
+  declarations: [
+    AppComponent,
+    EditComponent,
+    SongCardComponent,
+    SpotifyTestComponent,
+    FuncButtonComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -34,6 +43,7 @@ import { SongCardComponent } from './components/edit-page/song-card/song-card.co
     MatButtonModule,
     DragDropModule,
     MatCardModule,
+    HttpClientModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
