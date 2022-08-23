@@ -1,1 +1,12 @@
-<p>song-search works!</p>
+<form>
+  <mat-form-field>
+    <mat-label>Search</mat-label>
+    <input
+      matInput
+      type="text"
+      name="searchStr"
+      [(ngModel)]="searchStr"
+      (keyup)="searchMusic()"
+    />
+  </mat-form-field>
+</form>

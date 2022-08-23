@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,9 +22,16 @@ import { provideFunctions, getFunctions } from '@angular/fire/functions';
 import { EditComponent } from './components/edit/edit.component';
 import { SongCardComponent } from './components/song-card/song-card.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { SongSearchComponent } from './components/song-search/song-search.component';
 
 @NgModule({
-  declarations: [AppComponent, EditComponent, SongCardComponent, NavbarComponent],
+  declarations: [
+    AppComponent,
+    EditComponent,
+    SongCardComponent,
+    NavbarComponent,
+    SongSearchComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -37,6 +45,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     DragDropModule,
     MatCardModule,
     HttpClientModule,
+    FormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
