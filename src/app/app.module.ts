@@ -18,19 +18,12 @@ import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { provideFunctions, getFunctions } from '@angular/fire/functions';
-import { EditComponent } from './components/edit-page/edit/edit.component';
-import { SongCardComponent } from './components/edit-page/song-card/song-card.component';
-import { SpotifyTestComponent } from './components/test/spotify-test/spotify-test.component';
-import { FuncButtonComponent } from './components/test/func-button/func-button.component';
+import { EditComponent } from './components/edit/edit.component';
+import { SongCardComponent } from './components/song-card/song-card.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    EditComponent,
-    SongCardComponent,
-    SpotifyTestComponent,
-    FuncButtonComponent,
-  ],
+  declarations: [AppComponent, EditComponent, SongCardComponent, NavbarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

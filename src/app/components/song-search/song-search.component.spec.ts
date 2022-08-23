@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SpotifyTestComponent } from './spotify-test.component';
+import { SongSearchComponent } from './song-search.component';
 
-describe('SpotifyTestComponent', () => {
-  let component: SpotifyTestComponent;
-  let fixture: ComponentFixture<SpotifyTestComponent>;
+describe('SongSearchComponent', () => {
+  let component: SongSearchComponent;
+  let fixture: ComponentFixture<SongSearchComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SpotifyTestComponent ]
+      declarations: [ SongSearchComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SpotifyTestComponent);
+    fixture = TestBed.createComponent(SongSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

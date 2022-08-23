@@ -4,8 +4,7 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
-import { Song } from '../../../song';
-import { SongService } from 'src/app/services/song.service';
+import { Song } from '../../song';
 
 @Component({
   selector: 'app-edit',
@@ -21,15 +20,13 @@ export class EditComponent implements OnInit {
   addSong: Song[] = [];
   addBlank: Song[] = [];
 
-  constructor(private songService: SongService) {}
+  constructor() {}
 
   ngOnInit(): void {
     this.getSongs();
   }
 
-  getSongs(): void {
-    this.one = this.songService.getSongs();
-  }
+  getSongs(): void {}
 
   drop(event: CdkDragDrop<Song[]>) {
     if (event.previousContainer === event.container) {
