@@ -23,6 +23,7 @@ import { EditComponent } from './components/edit/edit.component';
 import { SongCardComponent } from './components/song-card/song-card.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SongSearchComponent } from './components/song-search/song-search.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { SongSearchComponent } from './components/song-search/song-search.compon
     SongCardComponent,
     NavbarComponent,
     SongSearchComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
