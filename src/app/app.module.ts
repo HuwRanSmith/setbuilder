@@ -51,7 +51,7 @@ import { LoginComponent } from './components/login/login.component';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-    provideFunctions(() => getFunctions()),
+    provideFunctions(() => getFunctions(undefined, 'europe-west2')),
   ],
   providers: [],
   bootstrap: [AppComponent],

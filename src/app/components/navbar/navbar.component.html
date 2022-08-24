@@ -1,6 +1,13 @@
 <header>
   <mat-toolbar color="primary">
-    <span>SetBuilder</span>
-    <button mat-button routerLink="/login">Login</button>
+    <span routerLink="/">SetBuilder</span>
+    <span class="spacer"></span>
+    <span *ngIf="user$; else showThis">
+      <span>{{ user$.displayName }}</span>
+      <button mat-button (click)="logout()">Sign Out</button>
+    </span>
+    <ng-template #showThis>
+      <button mat-button routerLink="/login">Sign In</button>
+    </ng-template>
   </mat-toolbar>
 </header>
