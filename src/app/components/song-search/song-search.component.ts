@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { SpotifyService } from 'src/app/services/spotify.service';
+import { Track } from 'src/app/track';
 
 @Component({
   selector: 'app-song-search',
@@ -9,14 +10,25 @@ import { SpotifyService } from 'src/app/services/spotify.service';
 })
 export class SongSearchComponent implements OnInit {
   searchStr: string = '';
+  searchRes: Track[] = [];
+
+  @Output() trackSelectEvent = new EventEmitter<Track>();
 
   constructor(private spotify: SpotifyService, private auth: Auth) {}
 
   ngOnInit(): void {}
 
   searchMusic() {
-    this.spotify.searchMusic(this.searchStr).subscribe((res) => {
-      console.log(res);
-    });
+    if (this.searchStr) {
+      this.spotify.searchMusic(this.searchStr).subscribe((res) => {
+        this.searchRes = res.tracks.items;
+      });
+    } else {
+      this.searchRes = [];
+    }
+  }
+
+  selectTrack(track: Track) {
+    this.trackSelectEvent.emit(track);
   }
 }

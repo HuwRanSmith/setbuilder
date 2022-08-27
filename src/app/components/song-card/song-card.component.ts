@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Song } from 'src/app/song';
+import { Artist } from 'src/app/artist';
+import { Track } from 'src/app/track';
 
 @Component({
   selector: 'app-song-card',
@@ -7,10 +8,14 @@ import { Song } from 'src/app/song';
   styleUrls: ['./song-card.component.css'],
 })
 export class SongCardComponent implements OnInit {
-  @Input() song: Song | undefined;
-  @Input() color: string | undefined;
+  @Input() track!: Track;
+  @Input() color?: string;
+
+  artists!: Artist[];
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.artists = this.track.artists;
+  }
 }

@@ -1,7 +1,12 @@
-<mat-card
-  class="song-card"
-  *ngIf="song"
-  [ngStyle]="{ 'background-color': color }"
->
-  <p>{{ song.name }}</p>
-</mat-card>
+<div *ngIf="track.name === '_blank_'; else songBlock">
+  <mat-card class="blank-card" [ngStyle]="{ 'background-color': color }">
+    <h2>Blank</h2>
+  </mat-card>
+</div>
+
+<ng-template #songBlock>
+  <mat-card class="song-card" [ngStyle]="{ 'background-color': color }">
+    <h3>{{ track.name }}</h3>
+    <h5>{{ artists[0].name }}</h5>
+  </mat-card>
+</ng-template>

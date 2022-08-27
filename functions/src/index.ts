@@ -20,7 +20,7 @@ const OAUTH_SCOPES = ['user-read-email'];
 exports.redirect = functions
   .region('europe-west2')
   .https.onCall((data, context) => {
-    const authorizeURL = Spotify.createAuthorizeURL(OAUTH_SCOPES);
+    const authorizeURL = Spotify.createAuthorizeURL(OAUTH_SCOPES, '', true);
     return { authorizeURL: authorizeURL };
   });
 

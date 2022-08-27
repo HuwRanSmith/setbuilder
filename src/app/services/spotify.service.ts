@@ -40,6 +40,6 @@ export class SpotifyService {
   searchMusic(str: string, type = 'track') {
     const searchUrl =
       this.apiUrlBase + '/search?query=' + str + '&type=' + type + '&limit=5';
-    return this.http.get(searchUrl, { headers: this.headers });
+    return this.http.get<any>(searchUrl, { headers: this.headers });
   }
 }

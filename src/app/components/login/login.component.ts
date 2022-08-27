@@ -47,6 +47,5 @@ export class LoginComponent implements OnInit {
 
   async login() {
     await signInWithCustomToken(this.auth, this.token);
-    this.spotify.getAccessToken();
   }
 }

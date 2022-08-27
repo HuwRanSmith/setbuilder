@@ -4,9 +4,9 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
-import { Song } from '../../song';
 import { SpotifyService } from 'src/app/services/spotify.service';
-import { Auth } from '@angular/fire/auth';
+import { Auth, onAuthStateChanged } from '@angular/fire/auth';
+import { Track } from 'src/app/track';
 
 @Component({
   selector: 'app-edit',
@@ -14,24 +14,38 @@ import { Auth } from '@angular/fire/auth';
   styleUrls: ['./edit.component.css'],
 })
 export class EditComponent implements OnInit {
-  one: Song[] = [];
-  two: Song[] = [];
-  three: Song[] = [];
-  four: Song[] = [];
+  one: Track[] = [];
+  two: Track[] = [];
+  three: Track[] = [];
+  four: Track[] = [];
 
-  addSong: Song[] = [];
-  addBlank: Song[] = [];
+  addedTrack: Track[] = [];
 
   constructor(private spotify: SpotifyService, private auth: Auth) {}
 
   ngOnInit(): void {
-    //console.log(this.auth.currentUser);
-    //this.spotify.setTokenHeader();
+    onAuthStateChanged(this.auth, (user) => {
+      if (user) {
+        this.spotify.getAccessToken();
+      } else {
+        console.log('cannot set api token, not logged in');
+      }
+    });
   }
 
-  getSongs(): void {}
+  addTrack(track: Track) {
+    this.addedTrack.push(track);
+  }
 
-  drop(event: CdkDragDrop<Song[]>) {
+  addBlank() {
+    let blank: Track = {
+      name: '_blank_',
+      artists: [{}],
+    };
+    this.addedTrack.push(blank);
+  }
+
+  drop(event: CdkDragDrop<Track[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,

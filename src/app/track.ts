@@ -1,6 +1,10 @@
+import { Artist } from './artist';
+
 export interface Track {
-  id: number;
+  id?: number;
   name: string;
-  genres: any;
-  artist: string;
+  artists: Artist[];
+  href?: string;
+  preview_url?: string;
+  uri?: string;
 }
