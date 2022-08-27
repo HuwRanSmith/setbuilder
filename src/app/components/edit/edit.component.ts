@@ -5,6 +5,8 @@ import {
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
 import { Song } from '../../song';
+import { SpotifyService } from 'src/app/services/spotify.service';
+import { Auth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-edit',
@@ -20,10 +22,11 @@ export class EditComponent implements OnInit {
   addSong: Song[] = [];
   addBlank: Song[] = [];
 
-  constructor() {}
+  constructor(private spotify: SpotifyService, private auth: Auth) {}
 
   ngOnInit(): void {
-    this.getSongs();
+    //console.log(this.auth.currentUser);
+    //this.spotify.setTokenHeader();
   }
 
   getSongs(): void {}

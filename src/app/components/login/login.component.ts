@@ -3,6 +3,7 @@ import { Auth, signInWithCustomToken } from '@angular/fire/auth';
 import { Functions, httpsCallableData } from '@angular/fire/functions';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { SpotifyService } from 'src/app/services/spotify.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private functions: Functions,
-    private auth: Auth
+    private auth: Auth,
+    private spotify: SpotifyService
   ) {
     this.redirectFunction = httpsCallableData(this.functions, 'redirect');
     this.tokenFunction = httpsCallableData(this.functions, 'token');
@@ -44,6 +46,7 @@ export class LoginComponent implements OnInit {
   }
 
   async login() {
-    return await signInWithCustomToken(this.auth, this.token);
+    await signInWithCustomToken(this.auth, this.token);
+    this.spotify.getAccessToken();
   }
 }
