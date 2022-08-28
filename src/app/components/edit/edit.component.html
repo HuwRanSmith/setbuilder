@@ -12,7 +12,11 @@
     >
       <mat-card class="empty-label" *ngIf="one.length === 0">Empty</mat-card>
       <div class="song-container" *ngFor="let track of one" cdkDrag>
-        <app-song-card [track]="track" color="#ffcccc"></app-song-card>
+        <app-song-card
+          [track]="track"
+          color="#ffcccc"
+          (deleteEvent)="deleteTrack(track.id, 'one')"
+        ></app-song-card>
       </div>
     </div>
   </div>
@@ -30,7 +34,11 @@
     >
       <mat-card class="empty-label" *ngIf="two.length === 0">Empty</mat-card>
       <div class="song-container" *ngFor="let track of two" cdkDrag>
-        <app-song-card [track]="track" color="#ccccff"></app-song-card>
+        <app-song-card
+          [track]="track"
+          color="#ccccff"
+          (deleteEvent)="deleteTrack(track.id, 'two')"
+        ></app-song-card>
       </div>
     </div>
   </div>
@@ -48,7 +56,11 @@
     >
       <mat-card class="empty-label" *ngIf="three.length === 0">Empty</mat-card>
       <div class="song-container" *ngFor="let track of three" cdkDrag>
-        <app-song-card [track]="track" color="#ccffcc"></app-song-card>
+        <app-song-card
+          [track]="track"
+          color="#ccffcc"
+          (deleteEvent)="deleteTrack(track.id, 'three')"
+        ></app-song-card>
       </div>
     </div>
   </div>
@@ -66,7 +78,11 @@
     >
       <mat-card class="empty-label" *ngIf="four.length === 0">Empty</mat-card>
       <div class="song-container" *ngFor="let track of four" cdkDrag>
-        <app-song-card [track]="track" color="#ffff99"></app-song-card>
+        <app-song-card
+          [track]="track"
+          color="#ffff99"
+          (deleteEvent)="deleteTrack(track.id, 'four')"
+        ></app-song-card>
       </div>
     </div>
   </div>
@@ -81,7 +97,10 @@
     class="new-track"
   >
     <div class="song-container" *ngFor="let track of addedTrack" cdkDrag>
-      <app-song-card [track]="track"></app-song-card>
+      <app-song-card
+        [track]="track"
+        (deleteEvent)="deleteTrack(track.id, 'addedTrack')"
+      ></app-song-card>
     </div>
   </div>
 </div>

@@ -24,6 +24,9 @@ import { SongCardComponent } from './components/song-card/song-card.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SongSearchComponent } from './components/song-search/song-search.component';
 import { LoginComponent } from './components/login/login.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
+import { MyListsComponent } from './components/my-lists/my-lists.component';
+import { BrowseComponent } from './components/browse/browse.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,9 @@ import { LoginComponent } from './components/login/login.component';
     NavbarComponent,
     SongSearchComponent,
     LoginComponent,
+    WelcomeComponent,
+    MyListsComponent,
+    BrowseComponent,
   ],
   imports: [
     BrowserModule,

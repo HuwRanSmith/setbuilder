@@ -39,10 +39,46 @@ export class EditComponent implements OnInit {
 
   addBlank() {
     let blank: Track = {
-      name: '_blank_',
+      id: -1,
       artists: [{}],
     };
     this.addedTrack.push(blank);
+  }
+
+  deleteTrack(id: number, listName: string) {
+    switch (listName) {
+      case 'one':
+        var index = this.one.findIndex((track) => track.id === id);
+        if (index !== -1) {
+          this.one.splice(index, 1);
+        }
+        break;
+
+      case 'two':
+        var index = this.two.findIndex((track) => track.id === id);
+        if (index !== -1) {
+          this.two.splice(index, 1);
+        }
+        break;
+
+      case 'three':
+        var index = this.three.findIndex((track) => track.id === id);
+        if (index !== -1) {
+          this.three.splice(index, 1);
+        }
+        break;
+
+      case 'four':
+        var index = this.four.findIndex((track) => track.id === id);
+        if (index !== -1) {
+          this.four.splice(index, 1);
+        }
+        break;
+
+      case 'addedTrack':
+        this.addedTrack = [];
+        break;
+    }
   }
 
   drop(event: CdkDragDrop<Track[]>) {
