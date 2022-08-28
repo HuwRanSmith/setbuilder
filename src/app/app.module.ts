@@ -27,6 +27,7 @@ import { LoginComponent } from './components/login/login.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { MyListsComponent } from './components/my-lists/my-lists.component';
 import { BrowseComponent } from './components/browse/browse.component';
+import { PlayerComponent } from './components/player/player.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { BrowseComponent } from './components/browse/browse.component';
     WelcomeComponent,
     MyListsComponent,
     BrowseComponent,
+    PlayerComponent,
   ],
   imports: [
     BrowserModule,

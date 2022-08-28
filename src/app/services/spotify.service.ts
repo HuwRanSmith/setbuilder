@@ -12,6 +12,8 @@ export class SpotifyService {
   private accessToken: string = '';
   private headers: HttpHeaders | undefined;
 
+  deviceId?: string;
+
   constructor(
     private http: HttpClient,
     private firestore: Firestore,
@@ -24,6 +26,7 @@ export class SpotifyService {
       const docRef = doc(this.firestore, 'users', uid);
       const docSnap = await getDoc(docRef);
       this.accessToken = docSnap.data()!['spotifyAccessToken'];
+      localStorage.setItem('spotify-access-token', this.accessToken);
       this.setTokenHeader();
     } else {
       console.log('not authenticated');

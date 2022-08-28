@@ -41,6 +41,7 @@ export class EditComponent implements OnInit {
     let blank: Track = {
       id: -1,
       artists: [{}],
+      album: {},
     };
     this.addedTrack.push(blank);
   }

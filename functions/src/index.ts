@@ -15,7 +15,7 @@ const Spotify = new SpotifyWebApi({
   //redirectUri: `https://${process.env.GCLOUD_PROJECT}.firebaseapp.com/login`,
 });
 
-const OAUTH_SCOPES = ['user-read-email'];
+const OAUTH_SCOPES = ['user-read-email', 'streaming', 'user-read-private'];
 
 exports.redirect = functions
   .region('europe-west2')
