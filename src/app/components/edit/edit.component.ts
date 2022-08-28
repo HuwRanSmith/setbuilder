@@ -6,7 +6,7 @@ import {
 } from '@angular/cdk/drag-drop';
 import { SpotifyService } from 'src/app/services/spotify.service';
 import { Auth, onAuthStateChanged } from '@angular/fire/auth';
-import { Track } from 'src/app/track';
+import { Track } from 'src/app/models/track';
 
 @Component({
   selector: 'app-edit',

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Artist } from 'src/app/artist';
-import { Track } from 'src/app/track';
+import { Artist } from 'src/app/models/artist';
+import { Track } from 'src/app/models/track';
 
 @Component({
   selector: 'app-song-card',
