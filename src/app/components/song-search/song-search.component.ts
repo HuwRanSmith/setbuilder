@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { SpotifyService } from 'src/app/services/spotify.service';
-import { Track } from 'src/app/track';
+import { Track } from 'src/app/models/track';
 
 @Component({
   selector: 'app-song-search',
