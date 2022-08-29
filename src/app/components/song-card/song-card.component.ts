@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Artist } from 'src/app/models/artist';
 import { Track } from 'src/app/models/track';
+import { SpotifyPlaybackSdkService } from 'src/app/services/spotify-playback-sdk.service';
+import { SpotifyService } from 'src/app/services/spotify.service';
 
 @Component({
   selector: 'app-song-card',
@@ -15,7 +17,10 @@ export class SongCardComponent implements OnInit {
 
   artists!: Artist[];
 
-  constructor() {}
+  constructor(
+    private spotifyService: SpotifyService,
+    private spotifyPlaybackService: SpotifyPlaybackSdkService
+  ) {}
 
   ngOnInit(): void {
     this.artists = this.track.artists;
@@ -23,5 +28,13 @@ export class SongCardComponent implements OnInit {
 
   onDelete() {
     this.deleteEvent.emit();
+  }
+
+  play() {
+    this.spotifyService.play(this.track.uri);
+  }
+
+  pause() {
+    this.spotifyService.pause();
   }
 }

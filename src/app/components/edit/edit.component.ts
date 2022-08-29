@@ -40,6 +40,7 @@ export class EditComponent implements OnInit {
   addBlank() {
     let blank: Track = {
       id: -1,
+      uri: '',
       artists: [{}],
       album: {},
     };

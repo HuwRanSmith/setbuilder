@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { SpotifyService } from './spotify.service';
 
 @Injectable({
@@ -25,6 +26,7 @@ export class SpotifyPlaybackSdkService {
       console.log(e);
     });
     document.head.appendChild(script);
+
     // When SDK is ready
     window.onSpotifyWebPlaybackSDKReady = () => {
       console.log('web SDK ready');
@@ -47,6 +49,14 @@ export class SpotifyPlaybackSdkService {
         this.deviceId = data.device_id;
         this.spotifyService.deviceId = this.deviceId;
       });
+
+      this.player.addListener('player_state_changed', (state) => {
+        this.state = state;
+      });
     };
+  }
+
+  getState(): Spotify.PlaybackState {
+    return this.state;
   }
 }
