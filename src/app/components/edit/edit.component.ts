@@ -6,7 +6,8 @@ import {
 } from '@angular/cdk/drag-drop';
 import { SpotifyService } from 'src/app/services/spotify.service';
 import { Auth, onAuthStateChanged } from '@angular/fire/auth';
-import { Track } from 'src/app/models/track';
+import { MyTrack } from 'src/app/models/myTrack';
+import { SpotifyPlaybackSdkService } from 'src/app/services/spotify-playback-sdk.service';
 
 @Component({
   selector: 'app-edit',
@@ -14,40 +15,45 @@ import { Track } from 'src/app/models/track';
   styleUrls: ['./edit.component.css'],
 })
 export class EditComponent implements OnInit {
-  one: Track[] = [];
-  two: Track[] = [];
-  three: Track[] = [];
-  four: Track[] = [];
+  one: MyTrack[] = [];
+  two: MyTrack[] = [];
+  three: MyTrack[] = [];
+  four: MyTrack[] = [];
 
-  addedTrack: Track[] = [];
+  addedTrack: MyTrack[] = [];
 
-  constructor(private spotify: SpotifyService, private auth: Auth) {}
+  constructor(
+    private spotify: SpotifyService,
+    private spotifySDK: SpotifyPlaybackSdkService,
+    private auth: Auth
+  ) {}
 
   ngOnInit(): void {
     onAuthStateChanged(this.auth, (user) => {
       if (user) {
         this.spotify.getAccessToken();
+        this.spotifySDK.addSpotifyPlaybackSdk();
       } else {
         console.log('cannot set api token, not logged in');
       }
     });
   }
 
-  addTrack(track: Track) {
+  addTrack(track: MyTrack) {
     this.addedTrack.push(track);
   }
 
   addBlank() {
-    let blank: Track = {
-      id: -1,
+    let blank: MyTrack = {
+      id: '-1',
       uri: '',
       artists: [{}],
-      album: {},
+      album: { images: [] },
     };
     this.addedTrack.push(blank);
   }
 
-  deleteTrack(id: number, listName: string) {
+  deleteTrack(id: string, listName: string) {
     switch (listName) {
       case 'one':
         var index = this.one.findIndex((track) => track.id === id);
@@ -83,7 +89,7 @@ export class EditComponent implements OnInit {
     }
   }
 
-  drop(event: CdkDragDrop<Track[]>) {
+  drop(event: CdkDragDrop<MyTrack[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,

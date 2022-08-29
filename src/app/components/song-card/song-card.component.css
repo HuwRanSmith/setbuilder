@@ -1,1 +1,7 @@
+mat-card {
+  width: 300px;
+}
 
+.delete {
+  float: right;
+}

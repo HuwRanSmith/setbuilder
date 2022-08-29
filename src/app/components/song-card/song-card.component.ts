@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Artist } from 'src/app/models/artist';
-import { Track } from 'src/app/models/track';
+import { Image } from 'src/app/models/image';
+import { MyTrack } from 'src/app/models/myTrack';
 import { SpotifyPlaybackSdkService } from 'src/app/services/spotify-playback-sdk.service';
 import { SpotifyService } from 'src/app/services/spotify.service';
 
@@ -10,12 +11,13 @@ import { SpotifyService } from 'src/app/services/spotify.service';
   styleUrls: ['./song-card.component.css'],
 })
 export class SongCardComponent implements OnInit {
-  @Input() track!: Track;
+  @Input() track!: MyTrack;
   @Input() color?: string;
 
   @Output() deleteEvent = new EventEmitter();
 
   artists!: Artist[];
+  images!: Image[];
 
   constructor(
     private spotifyService: SpotifyService,
@@ -24,6 +26,7 @@ export class SongCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.artists = this.track.artists;
+    this.images = this.track.album.images;
   }
 
   onDelete() {

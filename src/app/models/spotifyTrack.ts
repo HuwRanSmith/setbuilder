@@ -1,8 +1,8 @@
 import { Artist } from './artist';
 import { Album } from './album';
 
-export interface Track {
-  id: number;
+export interface SpotifyTrack {
+  id: string;
   uri: string;
   name?: string;
   duration_ms?: number;

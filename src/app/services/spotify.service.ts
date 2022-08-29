@@ -4,6 +4,9 @@ import { Firestore, doc, getDoc } from '@angular/fire/firestore';
 import { Auth } from '@angular/fire/auth';
 import { map } from 'rxjs';
 import { PlayStatus } from '../models/playStatus';
+import { MyTrack } from '../models/myTrack';
+import { AudioFeatures } from '../models/audioFeatures';
+import { SpotifyTrack } from '../models/spotifyTrack';
 
 export interface SpotifyOptions {
   limit?: number;
@@ -33,6 +36,35 @@ export class SpotifyService {
   private apiUrlBase: string = 'https://api.spotify.com/v1';
   private accessToken: string = '';
   private headers: HttpHeaders | undefined;
+
+  private major: string[] = [
+    '8B',
+    '3B',
+    '10B',
+    '5B',
+    '12B',
+    '7B',
+    '2B',
+    '9B',
+    '4B',
+    '11B',
+    '6B',
+    '1B',
+  ];
+  private minor: string[] = [
+    '5A',
+    '12A',
+    '7A',
+    '2A',
+    '9A',
+    '4A',
+    '11A',
+    '6A',
+    '1A',
+    '8A',
+    '3A',
+    '10A',
+  ];
 
   currentTrackUri: string = '';
   deviceId?: string;
@@ -72,6 +104,33 @@ export class SpotifyService {
     const searchUrl =
       this.apiUrlBase + '/search?query=' + str + '&type=' + type + '&limit=5';
     return this.http.get<any>(searchUrl, { headers: this.headers });
+  }
+
+  getMultipleAudioFeatures(tracks: SpotifyTrack[]) {
+    let queryString: string = '';
+    for (let index = 0; index < tracks.length; index++) {
+      const track = tracks[index];
+      queryString += track.id.toString();
+      if (index !== tracks.length - 1) {
+        queryString += ',';
+      }
+    }
+    const searchUrl = this.apiUrlBase + '/audio-features?query=' + queryString;
+    console.log(searchUrl);
+    return this.http.get<AudioFeatures[]>(searchUrl, { headers: this.headers });
+  }
+
+  getSingleAudioFeatures(track: SpotifyTrack) {
+    const searchUrl = this.apiUrlBase + '/audio-features/' + track.id;
+    return this.http.get<AudioFeatures>(searchUrl, { headers: this.headers });
+  }
+
+  getCamelotKey(pitchClass: number, mode: number): string {
+    if (mode === 1) {
+      return this.major[pitchClass];
+    } else {
+      return this.minor[pitchClass];
+    }
   }
 
   play(trackUri: string, options?: SpotifyOptions) {

@@ -1,4 +1,4 @@
-<div *ngIf="track.id === -1; else songBlock">
+<div *ngIf="track.id === '-1'; else songBlock">
   <mat-card class="blank-card" [ngStyle]="{ 'background-color': color }">
     <h2>Blank</h2>
     <button mat-icon-button class="delete" (click)="onDelete()">
@@ -7,6 +7,31 @@
   </mat-card>
 </div>
 
+<ng-template #songBlock>
+  <mat-card class="song-card" [ngStyle]="{ 'background-color': color }">
+    <mat-card-title-group>
+      <mat-card-title>{{ track.name }}</mat-card-title>
+      <mat-card-subtitle>{{ track.album.name }}</mat-card-subtitle>
+      <mat-card-subtitle>By: {{ artists[0].name }}</mat-card-subtitle>
+      <img mat-card-sm-image src="{{ images[images.length - 1].url }}" />
+    </mat-card-title-group>
+    <mat-card-actions>
+      <button mat-icon-button class="play" (click)="play()">
+        <mat-icon>play_arrow</mat-icon>
+      </button>
+      <button mat-icon-button class="pause" (click)="pause()">
+        <mat-icon>pause</mat-icon>
+      </button>
+      <span>Key: {{ track.key }}</span>
+      <span>BPM: {{ track.tempo }}</span>
+      <button mat-icon-button class="delete" (click)="onDelete()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</ng-template>
+
+<!--
 <ng-template #songBlock>
   <mat-card class="song-card" [ngStyle]="{ 'background-color': color }">
     <h3>{{ track.name }}</h3>
@@ -26,3 +51,4 @@
     </span>
   </mat-card>
 </ng-template>
+-->

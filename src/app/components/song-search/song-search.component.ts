@@ -1,7 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { SpotifyService } from 'src/app/services/spotify.service';
-import { Track } from 'src/app/models/track';
+import { MyTrack } from 'src/app/models/myTrack';
+import { SpotifyTrack } from 'src/app/models/spotifyTrack';
 
 @Component({
   selector: 'app-song-search',
@@ -10,25 +11,44 @@ import { Track } from 'src/app/models/track';
 })
 export class SongSearchComponent implements OnInit {
   searchStr: string = '';
-  searchRes: Track[] = [];
+  searchRes: MyTrack[] = [];
 
-  @Output() trackSelectEvent = new EventEmitter<Track>();
+  @Output() trackSelectEvent = new EventEmitter<MyTrack>();
 
   constructor(private spotify: SpotifyService, private auth: Auth) {}
 
   ngOnInit(): void {}
 
   searchMusic() {
+    this.searchRes = [];
+    let spotifySearchRes: SpotifyTrack[];
     if (this.searchStr) {
       this.spotify.searchMusic(this.searchStr).subscribe((res) => {
-        this.searchRes = res.tracks.items;
+        spotifySearchRes = res.tracks.items;
+        for (let index = 0; index < spotifySearchRes.length; index++) {
+          const spotifyTrack = spotifySearchRes[index];
+          this.spotify.getSingleAudioFeatures(spotifyTrack).subscribe((res) => {
+            let camelotKey = this.spotify.getCamelotKey(res.key, res.mode);
+            const track: MyTrack = {
+              id: spotifyTrack.id,
+              uri: spotifyTrack.uri,
+              name: spotifyTrack.name,
+              artists: spotifyTrack.artists,
+              album: spotifyTrack.album,
+              key: camelotKey,
+              tempo: res.tempo,
+              mode: res.mode,
+            };
+            this.searchRes.push(track);
+          });
+        }
       });
     } else {
       this.searchRes = [];
     }
   }
 
-  selectTrack(track: Track) {
+  selectTrack(track: MyTrack) {
     this.trackSelectEvent.emit(track);
   }
 }
