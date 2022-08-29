@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Auth, onAuthStateChanged } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 import { signOut } from '@firebase/auth';
 
 @Component({
@@ -10,7 +11,7 @@ import { signOut } from '@firebase/auth';
 export class NavbarComponent implements OnInit {
   user$: any;
 
-  constructor(private auth: Auth) {
+  constructor(private auth: Auth, private router: Router) {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         this.user$ = user;
@@ -23,6 +24,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {}
 
   async logout(): Promise<any> {
-    return await signOut(this.auth);
+    await signOut(this.auth);
+    this.router.navigate(['']);
   }
 }

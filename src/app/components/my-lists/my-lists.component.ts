@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Firestore } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { NewListDialogComponent } from '../new-list-dialog/newlist-dialog.component';
 
@@ -10,7 +11,7 @@ import { NewListDialogComponent } from '../new-list-dialog/newlist-dialog.compon
 export class MyListsComponent implements OnInit {
   newListName: string = '';
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, private firestore: Firestore) {}
 
   ngOnInit(): void {}
 
