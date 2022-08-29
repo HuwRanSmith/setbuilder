@@ -7,13 +7,15 @@
     <div
       cdkDropList
       #listOne="cdkDropList"
-      [cdkDropListData]="one"
+      [cdkDropListData]="list.one"
       [cdkDropListConnectedTo]="[listTwo, listThree, listFour]"
       class="song-list"
       (cdkDropListDropped)="drop($event)"
     >
-      <mat-card class="empty-label" *ngIf="one.length === 0">Empty</mat-card>
-      <div class="song-container" *ngFor="let track of one" cdkDrag>
+      <mat-card class="empty-label" *ngIf="list.one.length === 0"
+        >Empty</mat-card
+      >
+      <div class="song-container" *ngFor="let track of list.one" cdkDrag>
         <app-song-card
           [track]="track"
           color="#ffcccc"
@@ -29,13 +31,15 @@
     <div
       cdkDropList
       #listTwo="cdkDropList"
-      [cdkDropListData]="two"
+      [cdkDropListData]="list.two"
       [cdkDropListConnectedTo]="[listOne, listThree, listFour]"
       class="song-list"
       (cdkDropListDropped)="drop($event)"
     >
-      <mat-card class="empty-label" *ngIf="two.length === 0">Empty</mat-card>
-      <div class="song-container" *ngFor="let track of two" cdkDrag>
+      <mat-card class="empty-label" *ngIf="list.two.length === 0"
+        >Empty</mat-card
+      >
+      <div class="song-container" *ngFor="let track of list.two" cdkDrag>
         <app-song-card
           [track]="track"
           color="#ccccff"
@@ -51,13 +55,15 @@
     <div
       cdkDropList
       #listThree="cdkDropList"
-      [cdkDropListData]="three"
+      [cdkDropListData]="list.three"
       [cdkDropListConnectedTo]="[listOne, listTwo, listFour]"
       class="song-list"
       (cdkDropListDropped)="drop($event)"
     >
-      <mat-card class="empty-label" *ngIf="three.length === 0">Empty</mat-card>
-      <div class="song-container" *ngFor="let track of three" cdkDrag>
+      <mat-card class="empty-label" *ngIf="list.three.length === 0"
+        >Empty</mat-card
+      >
+      <div class="song-container" *ngFor="let track of list.three" cdkDrag>
         <app-song-card
           [track]="track"
           color="#ccffcc"
@@ -73,13 +79,15 @@
     <div
       cdkDropList
       #listFour="cdkDropList"
-      [cdkDropListData]="four"
+      [cdkDropListData]="list.four"
       [cdkDropListConnectedTo]="[listOne, listTwo, listThree]"
       class="song-list"
       (cdkDropListDropped)="drop($event)"
     >
-      <mat-card class="empty-label" *ngIf="four.length === 0">Empty</mat-card>
-      <div class="song-container" *ngFor="let track of four" cdkDrag>
+      <mat-card class="empty-label" *ngIf="list.four.length === 0"
+        >Empty</mat-card
+      >
+      <div class="song-container" *ngFor="let track of list.four" cdkDrag>
         <app-song-card
           [track]="track"
           color="#ffff99"

@@ -3,6 +3,8 @@ import { Auth } from '@angular/fire/auth';
 import { SpotifyService } from 'src/app/services/spotify.service';
 import { MyTrack } from 'src/app/models/myTrack';
 import { SpotifyTrack } from 'src/app/models/spotifyTrack';
+import { Artist } from 'src/app/models/artist';
+import { Album } from 'src/app/models/album';
 
 @Component({
   selector: 'app-song-search',
@@ -25,16 +27,35 @@ export class SongSearchComponent implements OnInit {
     if (this.searchStr) {
       this.spotify.searchMusic(this.searchStr).subscribe((res) => {
         spotifySearchRes = res.tracks.items;
-        for (let index = 0; index < spotifySearchRes.length; index++) {
-          const spotifyTrack = spotifySearchRes[index];
+        for (
+          let searchIndex = 0;
+          searchIndex < spotifySearchRes.length;
+          searchIndex++
+        ) {
+          const spotifyTrack = spotifySearchRes[searchIndex];
+          let artists: Artist[] = [];
+          for (
+            let artistIndex = 0;
+            artistIndex < spotifyTrack.artists.length;
+            artistIndex++
+          ) {
+            const artist = spotifyTrack.artists[artistIndex];
+            artists.push({ id: artist.id, name: artist.name });
+          }
+          let album: Album = {
+            id: spotifyTrack.album.id,
+            uri: spotifyTrack.album.uri,
+            name: spotifyTrack.album.name,
+            images: spotifyTrack.album.images,
+          };
           this.spotify.getSingleAudioFeatures(spotifyTrack).subscribe((res) => {
             let camelotKey = this.spotify.getCamelotKey(res.key, res.mode);
             const track: MyTrack = {
               id: spotifyTrack.id,
               uri: spotifyTrack.uri,
               name: spotifyTrack.name,
-              artists: spotifyTrack.artists,
-              album: spotifyTrack.album,
+              artists: artists,
+              album: album,
               key: camelotKey,
               tempo: res.tempo,
               mode: res.mode,

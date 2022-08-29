@@ -49,6 +49,10 @@ export class MyListsComponent implements OnInit {
         id: doc.id,
         name: doc.data()['name'],
         creator: doc.data()['creator'],
+        one: [],
+        two: [],
+        three: [],
+        four: [],
       };
       this.lists.push(setlist);
     });
