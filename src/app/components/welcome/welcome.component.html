@@ -1,4 +1,14 @@
-<h1>Welcome to SetBuilder!</h1>
-<h4>
-  Please sign in with a Spotify premium account to access the rest of the site
-</h4>
+<div *ngIf="user$; else showThis">
+  <h1>Hello {{ user$.displayName }}!</h1>
+  <h4>
+    You can use the My Lists tab to create and edit your own setlists, or use
+    the browse tab to view other users sick mixes!
+  </h4>
+</div>
+
+<ng-template #showThis>
+  <h1>Welcome to SetBuilder!</h1>
+  <h4>
+    Please sign in with a Spotify premium account to access the rest of the site
+  </h4>
+</ng-template>

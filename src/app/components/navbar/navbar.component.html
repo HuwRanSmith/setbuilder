@@ -1,8 +1,8 @@
 <header>
   <mat-toolbar color="primary">
     <span routerLink="">SetBuilder</span>
-    <span routerLink="lists">My Lists</span>
-    <span routerLink="browse">Browse</span>
+    <span *ngIf="user$" routerLink="lists" class="link">My Lists</span>
+    <span *ngIf="user$" routerLink="browse" class="link">Browse</span>
     <span class="spacer"></span>
     <span *ngIf="user$; else showThis">
       <span>{{ user$.displayName }}</span>

@@ -1,3 +1,5 @@
+<h1>{{ list.name }}</h1>
+
 <button mat-raised-button color="primary" (click)="saveList()">Save</button>
 <button mat-raised-button color="primary" (click)="deleteList()">Delete</button>
 
@@ -116,6 +118,10 @@
   </div>
 </div>
 <ng-template #searchBlock>
-  <app-song-search (trackSelectEvent)="addTrack($event)"></app-song-search>
-  <button mat-button (click)="addBlank()">New Blank</button>
+  <span>
+    <app-song-search (trackSelectEvent)="addTrack($event)"></app-song-search>
+  </span>
+  <span>
+    <button mat-button (click)="addBlank()">Add Blank Spacer</button>
+  </span>
 </ng-template>

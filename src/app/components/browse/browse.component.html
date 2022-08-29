@@ -1,5 +1,10 @@
+<div *ngIf="lists.length === 0">
+  <h1>There are no uploads yet :(</h1>
+</div>
+
 <div *ngFor="let list of lists">
   <mat-card (click)="onClick(list.id)">
     <mat-card-title>{{ list.name }}</mat-card-title>
+    <mat-card-subtitle>By: {{ list.creator }}</mat-card-subtitle>
   </mat-card>
 </div>

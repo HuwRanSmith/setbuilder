@@ -1,3 +1,7 @@
+<div *ngIf="lists.length === 0">
+  <h4>You have no lists, so make one!</h4>
+</div>
+
 <button mat-raised-button (click)="newList()">New List</button>
 
 <div *ngFor="let list of lists">

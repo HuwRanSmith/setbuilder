@@ -1,18 +1,23 @@
-<form>
-  <mat-form-field>
-    <mat-label>Search</mat-label>
-    <input
-      matInput
-      type="text"
-      name="searchStr"
-      [(ngModel)]="searchStr"
-      (keyup)="searchMusic()"
-    />
-  </mat-form-field>
-</form>
+<div class="container">
+  <form>
+    <mat-form-field appearance="fill">
+      <mat-label>Search</mat-label>
+      <input
+        matInput
+        type="text"
+        name="searchStr"
+        [(ngModel)]="searchStr"
+        (keyup)="searchMusic()"
+      />
+    </mat-form-field>
+  </form>
 
-<div *ngIf="searchRes">
-  <div *ngFor="let track of searchRes">
-    <app-song-card [track]="track" (click)="selectTrack(track)"></app-song-card>
+  <div *ngIf="searchRes">
+    <div *ngFor="let track of searchRes">
+      <app-song-card
+        [track]="track"
+        (click)="selectTrack(track)"
+      ></app-song-card>
+    </div>
   </div>
 </div>
