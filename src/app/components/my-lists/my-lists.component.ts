@@ -7,7 +7,6 @@ import {
   getDocs,
   query,
   where,
-  doc,
 } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';

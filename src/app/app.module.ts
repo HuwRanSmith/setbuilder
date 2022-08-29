@@ -29,6 +29,7 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { MyListsComponent } from './components/my-lists/my-lists.component';
 import { BrowseComponent } from './components/browse/browse.component';
 import { NewListDialogComponent } from './components/new-list-dialog/newlist-dialog.component';
+import { ViewComponent } from './components/view/view.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { NewListDialogComponent } from './components/new-list-dialog/newlist-dia
     MyListsComponent,
     BrowseComponent,
     NewListDialogComponent,
+    ViewComponent,
   ],
   imports: [
     BrowserModule,

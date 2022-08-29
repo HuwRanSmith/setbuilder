@@ -1,0 +1,53 @@
+<div class="mixer">
+  <div class="channel">
+    <h2>Channel 1</h2>
+
+    <div class="song-list">
+      <mat-card class="empty-label" *ngIf="list.one.length === 0"
+        >Empty</mat-card
+      >
+      <div class="song-container" *ngFor="let track of list.one">
+        <app-song-card [track]="track" color="#ffcccc"></app-song-card>
+      </div>
+    </div>
+  </div>
+
+  <div class="channel">
+    <h2>Channel 2</h2>
+
+    <div class="song-list">
+      <mat-card class="empty-label" *ngIf="list.two.length === 0"
+        >Empty</mat-card
+      >
+      <div class="song-container" *ngFor="let track of list.two">
+        <app-song-card [track]="track" color="#ccccff"></app-song-card>
+      </div>
+    </div>
+  </div>
+
+  <div class="channel">
+    <h2>Channel 3</h2>
+
+    <div class="song-list">
+      <mat-card class="empty-label" *ngIf="list.three.length === 0"
+        >Empty</mat-card
+      >
+      <div class="song-container" *ngFor="let track of list.three">
+        <app-song-card [track]="track" color="#ccffcc"></app-song-card>
+      </div>
+    </div>
+  </div>
+
+  <div class="channel">
+    <h2>Channel 4</h2>
+
+    <div class="song-list">
+      <mat-card class="empty-label" *ngIf="list.four.length === 0"
+        >Empty</mat-card
+      >
+      <div class="song-container" *ngFor="let track of list.four">
+        <app-song-card [track]="track" color="#ffff99"></app-song-card>
+      </div>
+    </div>
+  </div>
+</div>

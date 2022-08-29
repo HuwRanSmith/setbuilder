@@ -5,6 +5,7 @@ import { BrowseComponent } from './components/browse/browse.component';
 import { EditComponent } from './components/edit/edit.component';
 import { LoginComponent } from './components/login/login.component';
 import { MyListsComponent } from './components/my-lists/my-lists.component';
+import { ViewComponent } from './components/view/view.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 
 import { AuthGuardService as AuthGuard } from './services/auth/auth-guard.service';
@@ -18,6 +19,7 @@ const routes: Routes = [
     component: EditComponent,
     canActivate: [AuthGuard],
   },
+  { path: 'view/:id', component: ViewComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
 ];
 
