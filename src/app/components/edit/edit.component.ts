@@ -10,7 +10,13 @@ import { MyTrack } from 'src/app/models/myTrack';
 import { SpotifyPlaybackSdkService } from 'src/app/services/spotify-playback-sdk.service';
 import { Setlist } from 'src/app/models/setlist';
 import { ActivatedRoute, Router } from '@angular/router';
-import { doc, Firestore, getDoc, setDoc } from '@angular/fire/firestore';
+import {
+  deleteDoc,
+  doc,
+  Firestore,
+  getDoc,
+  setDoc,
+} from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-edit',
@@ -128,6 +134,11 @@ export class EditComponent implements OnInit {
       four: this.list.four,
     });
     console.log('saved!');
+  }
+
+  async deleteList() {
+    await deleteDoc(doc(this.firestore, 'setlists', this.list.id));
+    this.router.navigate(['lists']);
   }
 
   drop(event: CdkDragDrop<MyTrack[]>) {
