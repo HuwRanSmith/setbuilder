@@ -10,6 +10,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +28,7 @@ import { LoginComponent } from './components/login/login.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { MyListsComponent } from './components/my-lists/my-lists.component';
 import { BrowseComponent } from './components/browse/browse.component';
+import { NewListDialogComponent } from './components/new-list-dialog/newlist-dialog.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,7 @@ import { BrowseComponent } from './components/browse/browse.component';
     WelcomeComponent,
     MyListsComponent,
     BrowseComponent,
+    NewListDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,6 +57,7 @@ import { BrowseComponent } from './components/browse/browse.component';
     MatCardModule,
     HttpClientModule,
     FormsModule,
+    MatDialogModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
