@@ -89,6 +89,8 @@ export class EditComponent implements OnInit {
     }
   }
 
+  saveList() {}
+
   drop(event: CdkDragDrop<MyTrack[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(

@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'lists', component: MyListsComponent, canActivate: [AuthGuard] },
   { path: 'browse', component: BrowseComponent, canActivate: [AuthGuard] },
   {
-    path: 'lists/edit/new',
+    path: 'edit/:id',
     component: EditComponent,
     canActivate: [AuthGuard],
   },
